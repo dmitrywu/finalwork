@@ -3,23 +3,28 @@
 Первоначальный массив можно ввести с клавиатуры, либо ***задать на старте выполнения алгоритма. 
 При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами. */
 
-string[] inputArray = new string[9] { "all", "you", "need", "is", "mnogo", "ochen", ",", "mnogo", "deneg" };
+static int OutArraySizeCalculate(string[] array)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++) if (array[i].Length <= 3) count++;
+    return count;
+}
 
-int count = 0;
-for (int i = 0; i < inputArray.Length; i++) if (inputArray[i].Length <= 3) count++;
+static string[] OutArrayForming(string[] inputArray, int OutArraySize)
+{
+    string[] outputArray = new string[OutArraySizeCalculate(inputArray)];
+    int count = OutArraySize;
 
-string[] outputArray = new string[count];
-int outputArrayLength = outputArray.Length;
+    for (int i = 0; i < inputArray.Length; i++)
+        if (inputArray[i].Length <= 3)
+        {
+            outputArray[outputArray.Length - count] = inputArray[i];
+            count--;
+        }
+    return outputArray;
+}
 
-
-for (int i = 0; i < inputArray.Length; i++)
-    if (inputArray[i].Length <= 3)
-    {
-        count--;
-        outputArray[outputArray.Length - count - 1] = inputArray[i];
-    }
-
+string[] inputArray = new string[] { "all", "you", "need", "is", "mnogo", "ochen", ",", "mnogo", "deneg", "and", "other", "stuff", "!" };
 
 Console.WriteLine($"IN: Length: {inputArray.Length}, Content: {string.Join(" ", inputArray)}");
-Console.WriteLine($"OUT: Length: {outputArray.Length}, Content: {string.Join(" ", outputArray)}");
-
+Console.WriteLine($"OUT: Length: {OutArraySizeCalculate(inputArray)}, Content: {string.Join(" ", OutArrayForming(inputArray, OutArraySizeCalculate(inputArray)))}");
