@@ -3,37 +3,23 @@
 Первоначальный массив можно ввести с клавиатуры, либо ***задать на старте выполнения алгоритма. 
 При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами. */
 
-string[] inputArray = new string[7] { "all", "you", "need", "is", "mnogo", "ochen mnogo", "deneg" };
+string[] inputArray = new string[9] { "all", "you", "need", "is", "mnogo", "ochen", ",", "mnogo", "deneg" };
 
-// var ssttrr = string.Join(" ", inputArray);
-// Console.WriteLine($"{ssttrr}");
+int count = 0;
+for (int i = 0; i < inputArray.Length; i++) if (inputArray[i].Length <= 3) count++;
 
-// var ssttrr = string.Join(" ", inputArray);
-Console.WriteLine($"{string.Join(" ", inputArray)}");
-
-int count=0;
-for (int i = 0; i < inputArray.Length; i++)
-{
-    if (inputArray[i].Length<=3)
-    {
-        count++;
-        Console.WriteLine($"Pos: {i} - Length: {inputArray[i].Length} - Count: {count}"); // немного статистики :)
-    }
-}
- 
 string[] outputArray = new string[count];
-
-Console.WriteLine($"output length: {outputArray.Length}");
+int outputArrayLength = outputArray.Length;
 
 
 for (int i = 0; i < inputArray.Length; i++)
-{
-    if (inputArray[i].Length<=3)
+    if (inputArray[i].Length <= 3)
     {
         count--;
-        outputArray[count]=inputArray[i];
+        outputArray[outputArray.Length - count - 1] = inputArray[i];
     }
-}
 
-Console.WriteLine($"{string.Join(" ", outputArray)}");
+
+Console.WriteLine($"IN: Length: {inputArray.Length}, Content: {string.Join(" ", inputArray)}");
+Console.WriteLine($"OUT: Length: {outputArray.Length}, Content: {string.Join(" ", outputArray)}");
 
