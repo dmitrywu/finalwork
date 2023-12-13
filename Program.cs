@@ -10,10 +10,10 @@ static int OutArraySizeCalculate(string[] array)
     return count;
 }
 
-static string[] OutArrayForming(string[] inputArray, int OutArraySize)
+static string[] OutArrayForming(string[] inputArray, int outArraySize)
 {
     string[] outputArray = new string[OutArraySizeCalculate(inputArray)];
-    int count = OutArraySize;
+    int count = outArraySize;
 
     for (int i = 0; i < inputArray.Length; i++)
         if (inputArray[i].Length <= 3)
