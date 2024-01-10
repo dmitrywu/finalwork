@@ -24,7 +24,9 @@ static string[] OutArrayForming(string[] inputArray, int outArraySize, int wordS
     return outputArray;
 }
 
-string[] inputArray = new string[] { "all", "you", "need", "is", "mnogo", "ochen", ",", "mnogo", "deneg", "and", "other", "stuff", "!", "AAAaaa!", "need", "more tests" };
+string[] inputArray = new string[] {    "all", "you", "need", "is", "mnogo", "ochen", ",", 
+                                        "mnogo", "deneg", "and", "other", "stuff", "!", "AAAaaa!", 
+                                        "need", "more tests" };
 int maxWordSize = 3;
 
 Console.WriteLine($"IN: Length: {inputArray.Length}, Content: {string.Join(" ", inputArray)}");
